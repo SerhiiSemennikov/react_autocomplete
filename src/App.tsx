@@ -24,11 +24,11 @@ export const App: React.FC = () => {
 
   //const timerId = useRef(0);
   function handleInput(event: React.ChangeEvent<HTMLInputElement>) {
+    setSelectedUser(null);
     setValue(event.target.value);
     applyQuery(event.target.value);
     //window.clearTimeout(timerId.current);
     //timerId.current=window.setTimeout(() => {setAppliedQuery(event.target.value); }, 1000);
-    setSelectedUser(null);
   }
 
   const filteredUser = useMemo(() => {
@@ -60,7 +60,7 @@ export const App: React.FC = () => {
             />
           </div>
 
-          {focus && (
+          {focus && filteredUser && (
             <Autocomplete
               user={filteredUser}
               onSelected={setSelectedUser}
